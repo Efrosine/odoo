@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_tracer_prodi_tree" model="ir.ui.view">
+            <field name="name">tracer_prodi_tree</field>
+            <field name="model">tracer.prodi</field>
+            <field name="type">tree</field> <!-- Perbaikan di sini -->
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Data Prodi">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view -->
+        <record id="view_tracer_prodi_form" model="ir.ui.view">
+            <field name="name">tracer_prodi_form</field>
+            <field name="model">tracer.prodi</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Data Prodi">
+                    <header></header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Nama Prodi" />
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- search -->
+        <record id="view_tracer_prodi_search" model="ir.ui.view">
+            <field name="name">tracer_prodi</field>
+            <field name="model">tracer.prodi</field>
+            <field name="arch" type="xml">
+                <search string="Search Data">
+                    <filter string="Name" name="filter_by_name" domain="[('name', '=', '')]" />
+                    <field name="name" select="True" />
+                    <group string="Group By.." />
+                </search>
+            </field>
+        </record>
+
+        <!-- kanban , to show image, please add image_small in the model -->
+        <record id="view_tracer_prodi_kanban" model="ir.ui.view">
+            <field name="name">tracer_prodi</field>
+            <field name="model">tracer.prodi</field>
+            <field name="arch" type="xml">
+                <kanban default_order="id asc">
+                    <field name="name" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            <b>Nama Prodi:</b>
+                                            <field name="name" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- calendar if a date field exists -->
+        <!-- graph -->
+        <record id="view_tracer_prodi_graph" model="ir.ui.view">
+            <field name="name">tracer_prodi</field>
+            <field name="model">tracer.prodi</field>
+            <field name="arch" type="xml">
+                <graph string="Data Prodi" type="bar"></graph>
+            </field>
+        </record>
+
+        <!-- action window -->
+        <record id="action_tracer_prodi" model="ir.actions.act_window">
+            <field name="name">Data Prodi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tracer.prodi</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'search_default_fieldname':1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a new Prodi
+                </p>
+                <p>
+                    Click the Create button to add a new Prodi
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_tracer_prodi"
+            name="Program Studi"
+            parent="tracer_apps"
+            action="action_tracer_prodi"
+            sequence="10" />
+    </data>
+</odoo>

@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_pajar_agama_form" model="ir.ui.view">
+        <field name="name">pajar.agama.form</field>
+        <field name="model">pajar.agama</field>
+        <field name="arch" type="xml">
+            <form string="agama">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pajar_agama_tree" model="ir.ui.view">
+        <field name="name">pajar.agama.tree</field>
+        <field name="model">pajar.agama</field>
+        <field name="arch" type="xml">
+            <tree string="agama">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="action_agama" model="ir.actions.act_window">
+        <field name="name">Agama Action</field>
+        <field name="res_model">pajar.agama</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="agama_menu" name="Agama Menu" sequence="10"/>
+    <menuitem id="agama_menu_items" name="Agama" parent="agama_menu" action="action_agama"/>
+</odoo>

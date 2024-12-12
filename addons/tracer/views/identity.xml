@@ -1,0 +1,75 @@
+<odoo>
+    <!-- Tree View (List View) -->
+    <record id="view_tracer_identity_tree" model="ir.ui.view">
+        <field name="name">tracer_identity_tree</field>
+        <field name="model">tracer.identity</field>
+        <field name="arch" type="xml">
+            <tree string="identity">
+                <field name="name" />
+                <field name="nim" />
+                <field name="tahunlulus" />
+                <field name="fakultas" />
+                <field name="prodi" />
+                <field name="nomor_telepon" />
+                <field name="email" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_tracer_identity_form" model="ir.ui.view">
+        <field name="name">tracer_identity_form</field>
+        <field name="model">tracer.identity</field>
+        <field name="arch" type="xml">
+            <form string="Identity">
+                <sheet>
+                    <group>
+                        <group>
+                            <!-- Kolom kiri -->
+                            <group>
+                                <field name="name" />
+                                <field name="tahunlulus" />
+                                <field name="email" />
+                            </group>
+
+                            <!-- Kolom kanan -->
+                            <group>
+                                <field name="nim" />
+                                <field name="nomor_telepon" />
+                                <field name="alamat_rumah" />
+                            </group>
+                        </group>
+                    </group>
+
+                    <!-- Group kedua untuk Fakultas dan Prodi, juga dengan dua kolom -->
+                    <group>
+                        <field name="fakultas" />
+                        <field name="prodi" />
+                    </group>
+
+                    <!-- Group ketiga untuk radio button status saat ini -->
+                    <group>
+                        <field name="status_saat_ini" widget="radio" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action to open identity views -->
+    <record id="action_tracer_identity" model="ir.actions.act_window">
+        <field name="name">Identitas Alumni</field>
+        <field name="res_model">tracer.identity</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tambahkan identitas baru
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item to access identity -->
+    <menuitem id="menu_tracer_identity" name="Tracer Alumni" parent="tracer_apps"
+        action="action_tracer_identity" sequence="10" />
+</odoo>

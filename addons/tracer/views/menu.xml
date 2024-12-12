@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <!-- Menambahkan Menu Baru -->
+        <menuitem id="tracer_apps" name="CDC Clone" sequence="10"/>
+        <menuitem id="tracer_prodi" name="Program Studi" sequence="20" parent="tracer_apps"/>
+        <menuitem id="tracer_fakultas" name="Fakultas" sequence="30" parent="tracer_apps"/>
+        <menuitem id="tracer_identity" name="Tracer Alumni" sequence="40" parent="tracer_apps"/>
+    </data>
+</odoo>
